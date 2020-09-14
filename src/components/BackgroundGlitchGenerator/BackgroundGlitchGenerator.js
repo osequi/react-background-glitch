@@ -48,6 +48,7 @@ const propTypes = {
   }),
   /**
    * The color palettes for the columns
+   * At least two colors and widths are needed. `red 100%` won't work alone but `red 0%, red 100%` will work fine
    * @type {array}
    */
   palettes: PropTypes.arrayOf(
@@ -78,7 +79,7 @@ const defaultProps = {
     corners: ["to left"],
     angles: null,
   },
-  palettes: [{ colors: ["red"], colorWidths: ["100%"] }],
+  palettes: [{ colors: ["red", "red"], colorWidths: ["0%", "100%"] }],
 };
 
 /**
@@ -101,7 +102,7 @@ const BackgroundGlitchGenerator = (props) => {
       return { width: widths[index], height: heights[index] };
     });
 
-  console.log("backgroundSize:", backgroundSize);
+  //console.log("backgroundSize:", backgroundSize);
 
   const colorStopLists =
     palettes &&
@@ -116,7 +117,7 @@ const BackgroundGlitchGenerator = (props) => {
       );
     });
 
-  console.log("colorStopLists:", colorStopLists);
+  //console.log("colorStopLists:", colorStopLists);
 
   const positions =
     nrOfColumns &&
@@ -128,7 +129,7 @@ const BackgroundGlitchGenerator = (props) => {
         : "to left";
     });
 
-  console.log("positions:", positions);
+  //console.log("positions:", positions);
 
   const backgroundImage =
     nrOfColumns &&
