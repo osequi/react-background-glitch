@@ -6,6 +6,7 @@ import styled from "styled-components";
  * Imports other components and hooks
  */
 import BackgroundGlitch from "../BackgroundGlitch";
+import BackgroundGlitchGenerator from "../BackgroundGlitchGenerator";
 
 /**
  * Defines the prop types
@@ -22,13 +23,20 @@ const defaultProps = {};
  */
 const Container = styled("section")((props) => ({}));
 
+const Layer1 = styled("section")((props) => ({}));
+
+const Layer2 = styled("section")((props) => ({}));
+
 /**
  * Displays the component
  */
 const Demo = (props) => {
   return (
     <Container className="Demo">
-      <BackgroundGlitch width="50%" height="50%" />
+      <Layer1>
+        <BackgroundGlitchGenerator />
+      </Layer1>
+      <Layer2>{/*<BackgroundGlitch width="50%" height="50%" />*/}</Layer2>
     </Container>
   );
 };
