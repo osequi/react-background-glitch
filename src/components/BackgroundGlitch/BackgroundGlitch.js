@@ -13,6 +13,7 @@ import { propTypes, defaultProps } from "./BackgroundGlitch.props";
 import {
   generateBackgroundSizeCss,
   generateRandomBackgroundSizeCss,
+  generateBackgroundImageCss,
 } from "./BackgroundGlitch.logic";
 
 /**
@@ -21,6 +22,7 @@ import {
 const Container = styled.section.attrs((props) => ({
   style: {
     backgroundSize: `${props.backgroundSizeCss}`,
+    backgroundImage: `${props.backgroundImageCss}`,
   },
 }))`
   position: absolute;
@@ -28,75 +30,6 @@ const Container = styled.section.attrs((props) => ({
   height: 100vh;
   background-color: black;
   background-repeat: no-repeat;
-  background-image: repeating-linear-gradient(
-      to left,
-      blue 0%,
-      blue 0.1%,
-      red 0.1%,
-      red 0.2%,
-      lime 0.2%,
-      lime 0.3%
-    ),
-    repeating-linear-gradient(
-      to left,
-      red 0%,
-      red 0.1%,
-      blue 0.1%,
-      blue 0.2%,
-      lime 0.2%,
-      lime 0.3%
-    ),
-    repeating-linear-gradient(
-      to left,
-      blue 0%,
-      blue 0.1%,
-      red 0.1%,
-      red 0.2%,
-      lime 0.2%,
-      lime 0.3%
-    ),
-    repeating-linear-gradient(
-      to left,
-      aqua 0%,
-      aqua 0.1%,
-      fuchsia 0.1%,
-      fuchsia 0.2%,
-      yellow 0.2%,
-      yellow 0.3%
-    ),
-    repeating-linear-gradient(
-      to left,
-      aqua 0%,
-      aqua 0.1%,
-      yellow 0.1%,
-      yellow 0.2%,
-      fuchsia 0.2%,
-      fuchsia 0.3%
-    ),
-    repeating-linear-gradient(
-      to left,
-      yellow 0%,
-      yellow 0.1%,
-      aqua 0.1%,
-      aqua 0.2%,
-      fuchsia 0.2%,
-      fuchsia 0.3%
-    ),
-    repeating-linear-gradient(
-      to left,
-      white 0%,
-      white 0.1%,
-      black 0.1%,
-      black 0.2%
-    ),
-    repeating-linear-gradient(
-      to left,
-      aqua 0%,
-      aqua 0.1%,
-      fuchsia 0.1%,
-      fuchsia 0.2%
-    ),
-    repeating-linear-gradient(to left, red 0%, red 0.1%, lime 0.1%, lime 0.2%);
 `;
 
 /**
@@ -104,11 +37,15 @@ const Container = styled.section.attrs((props) => ({
  */
 const BackgroundGlitch = (props) => {
   const backgroundSizeCss = generateBackgroundSizeCss(props);
+  const backgroundImageCss = generateBackgroundImageCss(props);
+
+  console.log("backgroundImageCss:", backgroundImageCss);
 
   return (
     <Container
       className="BackgroundGlitch"
       backgroundSizeCss={backgroundSizeCss}
+      backgroundImageCss={backgroundImageCss}
     ></Container>
   );
 };

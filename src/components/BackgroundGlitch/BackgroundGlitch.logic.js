@@ -1,3 +1,75 @@
+const generateBackgroundImageCss = (props) => {
+  return `repeating-linear-gradient(
+        to left,
+        blue 0%,
+        blue 0.1%,
+        red 0.1%,
+        red 0.2%,
+        lime 0.2%,
+        lime 0.3%
+      ),
+      repeating-linear-gradient(
+        to left,
+        red 0%,
+        red 0.1%,
+        blue 0.1%,
+        blue 0.2%,
+        lime 0.2%,
+        lime 0.3%
+      ),
+      repeating-linear-gradient(
+        to left,
+        blue 0%,
+        blue 0.1%,
+        red 0.1%,
+        red 0.2%,
+        lime 0.2%,
+        lime 0.3%
+      ),
+      repeating-linear-gradient(
+        to left,
+        aqua 0%,
+        aqua 0.1%,
+        fuchsia 0.1%,
+        fuchsia 0.2%,
+        yellow 0.2%,
+        yellow 0.3%
+      ),
+      repeating-linear-gradient(
+        to left,
+        aqua 0%,
+        aqua 0.1%,
+        yellow 0.1%,
+        yellow 0.2%,
+        fuchsia 0.2%,
+        fuchsia 0.3%
+      ),
+      repeating-linear-gradient(
+        to left,
+        yellow 0%,
+        yellow 0.1%,
+        aqua 0.1%,
+        aqua 0.2%,
+        fuchsia 0.2%,
+        fuchsia 0.3%
+      ),
+      repeating-linear-gradient(
+        to left,
+        white 0%,
+        white 0.1%,
+        black 0.1%,
+        black 0.2%
+      ),
+      repeating-linear-gradient(
+        to left,
+        aqua 0%,
+        aqua 0.1%,
+        fuchsia 0.1%,
+        fuchsia 0.2%
+      ),
+      repeating-linear-gradient(to left, red 0%, red 0.1%, lime 0.1%, lime 0.2%);`;
+};
+
 /**
  * Generates a random `backgroundSize` CSS property
  * @param  {array} props An array of widths and heights. Only the array size will be used, widths and heights will be randomized.
@@ -48,4 +120,8 @@ const generateBackgroundSizeCss = (props) => {
   return css.slice(0, -2);
 };
 
-export { generateBackgroundSizeCss, generateRandomBackgroundSizeCss };
+export {
+  generateBackgroundSizeCss,
+  generateRandomBackgroundSizeCss,
+  generateBackgroundImageCss,
+};
