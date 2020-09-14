@@ -46,12 +46,14 @@ const propTypes = {
   /**
    * The color palettes for the columns
    * At least two colors and widths are needed. `red 100%` won't work alone but `red 0%, red 100%` will work fine
+   * // NOTE: Currently the number of palettes has to be the same as the number of columns. Fix this
    * @type {array}
    */
   palettes: PropTypes.arrayOf(
     PropTypes.shape({
       /**
        * The array of colors
+       * // NOTE: Currently double colors / widths has to be specified. Fix this
        * @type {array}
        */
       colors: PropTypes.arrayOf(PropTypes.string),
@@ -76,7 +78,10 @@ const defaultProps = {
     angles: null,
   },
   palettes: [
-    { colors: ["red", "red"], colorWidths: ["0%", "100%"] },
+    {
+      colors: ["red", "red", "blue", "blue", "green", "green"],
+      colorWidths: ["0%", "10%", "10%", "30%", "30%", "100%"],
+    },
     { colors: ["blue", "blue"], colorWidths: ["0%", "100%"] },
     { colors: ["green", "green"], colorWidths: ["0%", "100%"] },
   ],
