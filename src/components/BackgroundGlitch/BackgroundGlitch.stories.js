@@ -1,13 +1,20 @@
 import React from "react";
-import { storiesOf } from "@storybook/react";
 
 import BackgroundGlitch from "./BackgroundGlitch";
 import description from "./BackgroundGlitch.md";
 
-storiesOf("BackgroundGlitch", module).add(
-  "Overview",
-  () => <BackgroundGlitch />,
-  {
-    notes: { markdown: description }
-  }
-);
+export default {
+  component: BackgroundGlitch,
+  title: "BackgroundGlitch",
+  parameters: { notes: ApiDoc },
+};
+
+const Template = (args) => <BackgroundGlitch {...args} />;
+
+export const Default = Template.bind({});
+
+export const CustomSize = Template.bind({});
+CustomSize.args = {
+  width: "50vw",
+  height: "30vh",
+};
