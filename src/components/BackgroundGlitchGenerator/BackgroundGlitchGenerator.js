@@ -13,11 +13,6 @@ import BackgroundGlitch from "../BackgroundGlitch";
 const propTypes = {
   cols: PropTypes.shape({
     /**
-     * The number of columns
-     * @type {number}
-     */
-    number: PropTypes.number,
-    /**
      * The widths of the columns.
      * It's usually 100% to cover the screen width
      * @type {array}
@@ -26,6 +21,8 @@ const propTypes = {
     /**
      * The heights of the columns
      * It's usually random, summing up to 100%
+     * The items must be in an ascendent order
+     * @example ['10%', '11%']
      * @type {array}
      */
     heights: PropTypes.arrayOf(PropTypes.string),
@@ -73,13 +70,16 @@ const propTypes = {
  */
 const defaultProps = {
   columns: {
-    number: 1,
-    widths: ["100%"],
-    heights: ["100%"],
-    corners: ["to left"],
+    widths: ["100%", "100%", "40vw"],
+    heights: ["50%", "70%", "100%"],
+    corners: ["to left", "to right"],
     angles: null,
   },
-  palettes: [{ colors: ["red", "red"], colorWidths: ["0%", "100%"] }],
+  palettes: [
+    { colors: ["red", "red"], colorWidths: ["0%", "100%"] },
+    { colors: ["blue", "blue"], colorWidths: ["0%", "100%"] },
+    { colors: ["green", "green"], colorWidths: ["0%", "100%"] },
+  ],
 };
 
 /**
@@ -92,9 +92,9 @@ const Container = styled("div")((props) => ({}));
  */
 const BackgroundGlitchGenerator = (props) => {
   const { columns, palettes } = props;
-  const { number, widths, heights, corners, angles } = columns;
+  const { widths, heights, corners, angles } = columns;
 
-  const nrOfColumns = Array(number).fill("x");
+  const nrOfColumns = Array(widths.length).fill("x");
 
   const backgroundSize =
     nrOfColumns &&
