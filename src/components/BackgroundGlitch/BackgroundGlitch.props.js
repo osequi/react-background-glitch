@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
  * Defines the prop types
  */
 const propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.string,
   /**
    * The background size array
    * @type {array}
@@ -20,6 +22,8 @@ const propTypes = {
  * Defines the default props
  */
 const defaultProps = {
+  width: "100vw",
+  height: "100vh",
   backgroundSize: [
     {
       width: 100,

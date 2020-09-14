@@ -26,8 +26,8 @@ const Container = styled.section.attrs((props) => ({
   },
 }))`
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   background-color: black;
   background-repeat: no-repeat;
 `;
@@ -36,14 +36,16 @@ const Container = styled.section.attrs((props) => ({
  * Displays the component
  */
 const BackgroundGlitch = (props) => {
+  const { width, height } = props;
+
   const backgroundSizeCss = generateBackgroundSizeCss(props);
   const backgroundImageCss = generateBackgroundImageCss(props);
-
-  console.log("backgroundImageCss:", backgroundImageCss);
 
   return (
     <Container
       className="BackgroundGlitch"
+      width={width}
+      height={height}
       backgroundSizeCss={backgroundSizeCss}
       backgroundImageCss={backgroundImageCss}
     ></Container>

@@ -28,7 +28,7 @@ const Container = styled("section")((props) => ({}));
 const Demo = (props) => {
   return (
     <Container className="Demo">
-      <BackgroundGlitch />
+      <BackgroundGlitch width="50%" height="50%" />
     </Container>
   );
 };
