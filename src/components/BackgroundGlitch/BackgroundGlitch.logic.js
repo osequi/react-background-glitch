@@ -1,73 +1,36 @@
+/**
+ * Generates the `background-image` property containing `repeating-linear-gradient`s
+ * @param  {array} props An array of props for `repeating-linear-gradient`
+ * @return {string}      A series of `repeating-linear-values` CSS values
+ *
+ * @example return value: repeating-linear-gradient(to left, blue 0%, blue 0.1%, red 0.1%, red 0.2%, lime 0.2%, lime 0.3%)
+ *
+ */
 const generateBackgroundImageCss = (props) => {
-  return `repeating-linear-gradient(
-        to left,
-        blue 0%,
-        blue 0.1%,
-        red 0.1%,
-        red 0.2%,
-        lime 0.2%,
-        lime 0.3%
-      ),
-      repeating-linear-gradient(
-        to left,
-        red 0%,
-        red 0.1%,
-        blue 0.1%,
-        blue 0.2%,
-        lime 0.2%,
-        lime 0.3%
-      ),
-      repeating-linear-gradient(
-        to left,
-        blue 0%,
-        blue 0.1%,
-        red 0.1%,
-        red 0.2%,
-        lime 0.2%,
-        lime 0.3%
-      ),
-      repeating-linear-gradient(
-        to left,
-        aqua 0%,
-        aqua 0.1%,
-        fuchsia 0.1%,
-        fuchsia 0.2%,
-        yellow 0.2%,
-        yellow 0.3%
-      ),
-      repeating-linear-gradient(
-        to left,
-        aqua 0%,
-        aqua 0.1%,
-        yellow 0.1%,
-        yellow 0.2%,
-        fuchsia 0.2%,
-        fuchsia 0.3%
-      ),
-      repeating-linear-gradient(
-        to left,
-        yellow 0%,
-        yellow 0.1%,
-        aqua 0.1%,
-        aqua 0.2%,
-        fuchsia 0.2%,
-        fuchsia 0.3%
-      ),
-      repeating-linear-gradient(
-        to left,
-        white 0%,
-        white 0.1%,
-        black 0.1%,
-        black 0.2%
-      ),
-      repeating-linear-gradient(
-        to left,
-        aqua 0%,
-        aqua 0.1%,
-        fuchsia 0.1%,
-        fuchsia 0.2%
-      ),
-      repeating-linear-gradient(to left, red 0%, red 0.1%, lime 0.1%, lime 0.2%);`;
+  const { backgroundImage } = props;
+
+  const css =
+    backgroundImage &&
+    backgroundImage.reduce((result, item) => {
+      const { sideOrCorner, angle, colorStopList } = item;
+
+      const position = sideOrCorner ? sideOrCorner : angle ? angle : "";
+
+      const stops =
+        colorStopList &&
+        colorStopList.reduce((r, i) => {
+          const { color, stop } = i;
+
+          return `${r}${color} ${stop}, `;
+        }, "");
+
+      return `${result}repeating-linear-gradient(${position}, ${stops.slice(
+        0,
+        -2
+      )}), `;
+    }, "");
+
+  return css.slice(0, -2);
 };
 
 /**
