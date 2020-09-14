@@ -21,9 +21,14 @@ const defaultProps = {};
 /**
  * Styles the component container
  */
-const Container = styled("section")((props) => ({}));
+const Container = styled("section")((props) => ({
+  display: "flex",
+  flexDirection: "column",
+}));
 
-const Layer1 = styled("section")((props) => ({}));
+const Layer1 = styled("section")((props) => ({
+  marginBottom: "10vh",
+}));
 
 const Layer2 = styled("section")((props) => ({}));
 
@@ -34,9 +39,13 @@ const Demo = (props) => {
   return (
     <Container className="Demo">
       <Layer1>
+        BackgroundGlitchGenerator:
         <BackgroundGlitchGenerator />
       </Layer1>
-      <Layer2>{/*<BackgroundGlitch width="50%" height="50%" />*/}</Layer2>
+      <Layer2>
+        BackgroundGlitch:
+        <BackgroundGlitch width="50%" height="50%" />
+      </Layer2>
     </Container>
   );
 };

@@ -20,8 +20,8 @@ const propTypes = {
    */
   backgroundSize: PropTypes.arrayOf(
     PropTypes.shape({
-      width: PropTypes.number,
-      height: PropTypes.number,
+      width: PropTypes.string,
+      height: PropTypes.string,
     })
   ),
   /**
@@ -49,40 +49,40 @@ const defaultProps = {
   height: "100vh",
   backgroundSize: [
     {
-      width: 100,
-      height: 10,
+      width: "100%",
+      height: "10%",
     },
     {
-      width: 100,
-      height: 20,
+      width: "100%",
+      height: "20%",
     },
     {
-      width: 100,
-      height: 30,
+      width: "100%",
+      height: "30%",
     },
     {
-      width: 100,
-      height: 40,
+      width: "100%",
+      height: "40%",
     },
     {
-      width: 100,
-      height: 50,
+      width: "100%",
+      height: "50%",
     },
     {
-      width: 100,
-      height: 60,
+      width: "100%",
+      height: "60%",
     },
     {
-      width: 100,
-      height: 70,
+      width: "100%",
+      height: "70%",
     },
     {
-      width: 100,
-      height: 80,
+      width: "100%",
+      height: "80%",
     },
     {
-      width: 100,
-      height: 90,
+      width: "100%",
+      height: "90%",
     },
   ],
   backgroundImage: [

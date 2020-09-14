@@ -91,22 +91,55 @@ const Container = styled("div")((props) => ({}));
  */
 const BackgroundGlitchGenerator = (props) => {
   const { columns, palettes } = props;
+  const { number, widths, heights, corners, angles } = columns;
+
+  const nrOfColumns = Array(number).fill("x");
 
   const backgroundSize =
-    columns &&
-    columns.map((item, index) => {
-      const { widths, heights } = item;
-
+    nrOfColumns &&
+    nrOfColumns.map((item, index) => {
       return { width: widths[index], height: heights[index] };
     });
 
+  console.log("backgroundSize:", backgroundSize);
+
   const colorStopLists =
     palettes &&
-    palettes.map((item, index) => {
+    palettes.map((item) => {
       const { colors, colorWidths } = item;
 
-      return { color: colors[index], stop: colorWidths[index] };
+      return (
+        colors &&
+        colors.map((item, index) => {
+          return { color: colors[index], stop: colorWidths[index] };
+        })
+      );
     });
+
+  console.log("colorStopLists:", colorStopLists);
+
+  const positions =
+    nrOfColumns &&
+    nrOfColumns.map((item, index) => {
+      return corners && corners[index]
+        ? corners[index]
+        : angles && angles[index]
+        ? angles[index]
+        : "to left";
+    });
+
+  console.log("positions:", positions);
+
+  const backgroundImage =
+    nrOfColumns &&
+    nrOfColumns.map((item, index) => {
+      return {
+        sideOrCorner: positions[index],
+        colorStopList: colorStopLists[index],
+      };
+    });
+
+  console.log("backgroundImage:", backgroundImage);
 
   return (
     <Container className="BackgroundGlitchGenerator">
