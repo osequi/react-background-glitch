@@ -78,7 +78,7 @@ const defaultProps = {
     corners: ["to left"],
     angles: null,
   },
-  palettes: [{ colors: ["red"], colorWidths: "100%" }],
+  palettes: [{ colors: ["red"], colorWidths: ["100%"] }],
 };
 
 /**
@@ -92,9 +92,28 @@ const Container = styled("div")((props) => ({}));
 const BackgroundGlitchGenerator = (props) => {
   const { columns, palettes } = props;
 
+  const backgroundSize =
+    columns &&
+    columns.map((item, index) => {
+      const { widths, heights } = item;
+
+      return { width: widths[index], height: heights[index] };
+    });
+
+  const colorStopLists =
+    palettes &&
+    palettes.map((item, index) => {
+      const { colors, colorWidths } = item;
+
+      return { color: colors[index], stop: colorWidths[index] };
+    });
+
   return (
     <Container className="BackgroundGlitchGenerator">
-      <BackgroundGlitch backgroundImage={columns} backgroundSize={sizes} />
+      <BackgroundGlitch
+        backgroundImage={backgroundImage}
+        backgroundSize={backgroundSize}
+      />
     </Container>
   );
 };
